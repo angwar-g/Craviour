@@ -1,0 +1,16 @@
+.order-history{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 140px;
+}
+
+.order-history p{
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color: #262626;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 15px;
+}

@@ -1,0 +1,102 @@
+.topnav {
+    flex-direction: row;
+    padding: 30px;
+    background: #fff;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    bottom: 0;
+}
+  
+.topnav .title {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 15px;
+    margin-bottom: 5px ;
+    color: #C04000;
+}
+
+.topnav .hamburger {
+    font-size: 20px;
+}
+
+.topnav .search {
+    --padding: 5px;
+  
+  
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: #E5E4E2;
+    transition: box-shadow 0.25s;
+    position: absolute;
+    right: 170px;
+  
+}
+  
+.topnav .search-input {
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;  
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 300px;
+}
+  
+.topnav .search :focus-within {
+    box-shadow: none;
+}
+  
+.topnav .search-input::placeholder,
+.topnav .search-icon {
+    min-width: 5px;
+    min-height: 5px;
+    color: rgba(0, 0, 0, 0.25);
+}
+  
+.topnav .cart {
+    position: absolute;
+    right: 50px;
+    padding: var(--padding);
+    font-size: 30px;
+    cursor: pointer;
+    bottom: 8px;
+}
+  
+.topnav .cart .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 5px;
+    top: -3px;
+    right: -6px;
+}
+  
+.topnav .profile {
+    position: absolute;
+    margin-bottom: 5px;
+    right: 30px;
+    font-size: 38px;
+    padding: var(--padding);
+    cursor: pointer;
+}
+
+  
+  
+  
+  
+  
+  

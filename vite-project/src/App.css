@@ -1,0 +1,15 @@
+.App {
+    transition: transform 0.8s ease-in-out;
+    overflow: hidden;
+    width: 100vw;
+  }
+  
+  .shift-content {
+    transform: translateX(100px);
+    transition: transform 0.8s ease-in-out;
+    overflow: hidden;
+    width: 90vw;
+  }
+  
+  /* Add any other styles you need */
+  
