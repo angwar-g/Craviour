@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4%;
+}
+
+.navbar h1 {
+    color: tomato;
+}
+
+.navbar p {
+    color: black;
+    margin-right: 60px;
+}
+
+.navbar .profile {
+    width: 40px;
+}
