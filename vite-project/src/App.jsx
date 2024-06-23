@@ -6,7 +6,8 @@ import { useState } from 'react';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import TopNav from './components/TopNav/TopNav';
 import OrderHistory from './pages/OrderHistory/OrderHistory';
-import Footer from './components/Footer/Footer';  
+import Footer from './components/Footer/Footer';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';  
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -25,6 +26,7 @@ function App() {
           <Route path='/' element={<Home toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/orderhistory' element={<OrderHistory />} />
+          <Route path='/order' element={<PlaceOrder />} />
         </Routes>
         <Footer/>
       </div>
