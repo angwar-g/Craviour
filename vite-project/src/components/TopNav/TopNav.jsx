@@ -5,13 +5,21 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
 import { assets } from '../../assets/assets';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { storeContext } from '../../context/StoreContext';
 
 const TopNav = (props) => {
     const [showNav, setShowNav] = useState(false);
 
-    const{getTotalCartAmount} = useContext(storeContext)
+    const{getTotalCartAmount, token, setToken} = useContext(storeContext)
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("token")
+        setToken("")
+        navigate('/')
+    }
 
     console.log('TopNav props:', props);
 
@@ -33,7 +41,21 @@ const TopNav = (props) => {
                 <Link to="/cart"><div className='cart'><FaShoppingCart />
                     <div className={getTotalCartAmount()===0 ? "": "dot"}></div>
                 </div></Link>
-                <IoMdContact onClick={() => props.setShowLogin(true)} className='profile' />
+                {!token? <IoMdContact onClick={() => props.setShowLogin(true)} className='profile' /> : <div className='topnav-profile'>
+                    <img src={assets.profile_icon} />
+                    <ul className="nav-profile-dropdown">
+                        <li>
+                            <img src={assets.bag_icon}></img>
+                            <p>Orders</p>
+                        </li>
+                        <hr />
+                        <li onClick={logout}>
+                            <img src={assets.profile_icon}></img>
+                            <p>Logout</p>
+                        </li>
+                        </ul>
+                </div> }
+                
             </div>
             {<Navbar show={showNav} />}
         </div>

@@ -1,9 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets';
+import { storeContext } from '../../context/StoreContext';
+import axios from 'axios';
 
 const LoginPopup = ({ setShowLogin }) => {
+    const {url, setToken} = useContext(storeContext)
     const [currState, setCurrState] = useState("Login");
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        password: ""
+    })
+
+    const onchangeHandler = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data =>({...data, [name]: value}))
+    }
+
+    const onLogin = async (event) => {
+        event.preventDefault()
+        let newUrl = url
+        if(currState === "Login") {
+            newUrl += '/api/user/login'
+        }
+        else {
+            newUrl += '/api/user/register'
+        }
+
+        const response = await axios.post(newUrl, data)
+        if (response.data.success) {
+            setToken(response.data.token)
+            localStorage.setItem("token", response.data.token)
+            setShowLogin(false)
+        }
+        else {
+            alert(response.data.message)
+        }
+    }
 
     useEffect(() => {
         // Disable scrolling when the component mounts
@@ -17,43 +52,17 @@ const LoginPopup = ({ setShowLogin }) => {
 
     return (
         <div className='login-popup'>
-            <form action="" className="login-popup-container">
+            <form onSubmit={onLogin} action="" className="login-popup-container">
                 <div className='login-popup-title'>
                     <h2>{currState}</h2>
                     <img onClick={() => setShowLogin(false)} src={assets.cross_icon} alt="Close" />
                 </div>
                 <div className="login-popup-inputs">
-                    {currState === "Login" ? null : (
-                        <input
-                            type="text"
-                            pattern="[A-Za-z]+"
-                            placeholder="Name"
-                            required
-                            onInvalid={(e) => {
-                                e.target.setCustomValidity("Please enter a name.");
-                            }}
-                            onInput={(e) => {
-                                e.target.setCustomValidity("");
-                            }}
-                        />
-                    )}
-
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        required
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required
-                    />
+                    {currState === "Login" ? <></> : <input name= 'name' onChange={onchangeHandler} value={data.name} type='text' placeholder='Name' required></input>}
+                    <input name='email' onChange={onchangeHandler} value={data.email} type='email' placeholder='Email' required></input>
+                    <input name='password' onChange={onchangeHandler} value={data.password} type='password' placeholder='Password' required></input>
                 </div>
-                <button>{currState === "Sign Up" ? "Create Account" : "Login"}</button>
+                <button type='submit'>{currState === "Sign Up" ? "Create Account" : "Login"}</button>
                 <div className="login-popup-condition">
                     <input type="checkbox" required />
                     <p>By continuing, I agree to the Terms of Use and Privacy Policy.</p>

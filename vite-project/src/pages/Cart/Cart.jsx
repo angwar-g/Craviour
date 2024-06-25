@@ -5,7 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-  const {cartItems, food_list, addToCart, removeFromCart, getTotalCartAmount} = useContext(storeContext)
+  const {cartItems, food_list, addToCart, removeFromCart, getTotalCartAmount, url} = useContext(storeContext)
 
   const navigate = useNavigate()
   return (
@@ -28,7 +28,7 @@ const Cart = () => {
             return (
               <div>
               <div className='cart-items-title cart-items-item'>
-                <img src={item.image} alt="" />
+                <img src={url+"/images/"+item.image} alt="" />
                 <p>{item.name}</p>
                 <p>₹{item.price}</p>
                 <p>{cartItems[item._id]}</p>
