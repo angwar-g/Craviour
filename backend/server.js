@@ -2,7 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import { connectDB } from './config/db.js'
 import foodRouter from './routes/foodRoute.js'
-
+import userRouter from './routes/userRoute.js'
+import 'dotenv/config'
 
 // APP CONFIG
 const app = express()
@@ -18,6 +19,7 @@ connectDB()
 // api endpoints
 app.use('/api/food', foodRouter)
 app.use('/images', express.static('uploads'))
+app.use('/api/user', userRouter)
 
 // when we hit the '/' endpoint, we will get a response of 'API Working'
 app.get('/', (req, res) => {
