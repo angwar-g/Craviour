@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-const Add = () => {
+const Add = ({url}) => {
 
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
@@ -20,7 +20,6 @@ const Add = () => {
     }
 
     const onSubmitHandler = async (event) => {
-        const url = 'http://localhost:4000';
         event.preventDefault();
         const formData = new FormData();
         formData.append('name', data.name);
@@ -39,7 +38,7 @@ const Add = () => {
                 toast.success(response.data.message)
         }
         else {
-            toast.error(response.data.message)
+            toast.error("Error")
         }
     }
 
