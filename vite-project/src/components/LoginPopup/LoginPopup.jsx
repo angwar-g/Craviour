@@ -51,6 +51,15 @@ const LoginPopup = ({ setShowLogin }) => {
         };
     }, []);
 
+    // Effect to clear form data when switching between Login and Sign Up
+    useEffect(() => {
+        setData({
+            name: "",
+            email: "",
+            password: ""
+        });
+    }, [currState]);
+
     return (
         <div className='login-popup'>
             <form onSubmit={onLogin} action="" className="login-popup-container">

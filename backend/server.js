@@ -5,7 +5,6 @@ import foodRouter from './routes/foodRoute.js'
 import userRouter from './routes/userRoute.js'
 import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
-import orderRouter from './routes/orderRoute.js'
 
 // APP CONFIG
 const app = express()
@@ -23,7 +22,6 @@ app.use('/api/food', foodRouter)
 app.use('/images', express.static('uploads'))
 app.use('/api/user', userRouter)
 app.use('/api/cart', cartRouter)
-app.use('/api/order', orderRouter)
 
 // when we hit the '/' endpoint, we will get a response of 'API Working'
 app.get('/', (req, res) => {
