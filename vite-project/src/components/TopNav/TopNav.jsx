@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react';
 import './TopNav.css';
 import Navbar from '../Navbar/Navbar';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaShoppingCart } from "react-icons/fa";
-import { IoMdContact } from "react-icons/io";
 import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { storeContext } from '../../context/StoreContext';
@@ -30,7 +28,7 @@ const TopNav = (props) => {
                     className='hamburger' 
                     onClick={() => {
                         setShowNav(!showNav); 
-                        props.toggleSidebar(); // Ensure this is defined
+                        props.toggleSidebar();
                     }} 
                 />
                 <Link to="/"><div className='title'>Craviour.</div></Link>
@@ -38,10 +36,12 @@ const TopNav = (props) => {
                     <img className="search-icon" src={assets.search_icon} alt="search icon" />
                     <input className="search-input" placeholder="Search" type="search" />
                 </div>  
-                <Link to="/cart"><div className='cart'><FaShoppingCart />
-                    <div className={getTotalCartAmount()===0 ? "": "dot"}></div>
-                </div></Link>
-                {!token? <IoMdContact onClick={() => props.setShowLogin(true)} className='profile' /> : <div className='topnav-profile'>
+                
+                <Link to="/cart"><img src= {assets.basket_icon} className='cart'/></Link>
+                <div className={getTotalCartAmount()===0 ? "": "dot"}></div>
+
+                {!token? <button onClick={() => props.setShowLogin(true)} className='profile-button'>Sign In</button> : 
+                <div className='topnav-profile'> 
                     <img src={assets.profile_icon} />
                     <ul className="nav-profile-dropdown">
                         <li>

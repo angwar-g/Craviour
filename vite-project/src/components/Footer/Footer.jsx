@@ -2,12 +2,12 @@ import React from 'react'
 import './Footer.css'
 import { assets } from '../../assets/assets'
 
-const Footer = () => {
+const Footer = ({ isSidebarOpen }) => {
   return (
-    <div className='footer' id='footer'>
+    <div className={`footer ${isSidebarOpen ? 'footer-sidebar-open' : ''}`} id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
-                <img src={assets.logo}></img>
+                <img className="logo-image" src={assets.logo}></img>
                 <p>By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners.</p>
                 <div className="footer-social-icons">
                     <img src={assets.facebook_icon}></img>

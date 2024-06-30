@@ -78,7 +78,7 @@
     background: #E5E4E2;
     transition: box-shadow 0.25s;
     position: absolute;
-    right: 170px;
+    right: 200px;
   
 }
   
@@ -106,21 +106,21 @@
   
 .topnav .cart {
     position: absolute;
-    right: 50px;
+    right: 90px;
     padding: var(--padding);
-    font-size: 30px;
+    font-size: 18px;
     cursor: pointer;
-    bottom: 8px;
+    bottom: 15px;
 }
   
-.topnav .cart .dot {
+.topnav .dot {
     position: absolute;
     min-width: 10px;
     min-height: 10px;
     background-color: tomato;
     border-radius: 5px;
-    top: -3px;
-    right: -6px;
+    top: 15px;
+    right: 103px;
 }
   
 .profile {
@@ -130,6 +130,24 @@
     font-size: 38px;
     padding: var(--padding);
     cursor: pointer;
+}
+
+.profile-button {
+    position: absolute;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    right: 20px;
+    font-size: 16px;
+    padding: 10px 30px;
+    background: transparent;
+    color: #49557e;
+    border: 1px solid tomato;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.profile-button:hover {
+    background-color: #fff4f2;
 }
 
   

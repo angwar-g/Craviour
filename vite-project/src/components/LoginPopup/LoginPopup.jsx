@@ -4,42 +4,43 @@ import { assets } from '../../assets/assets';
 import { storeContext } from '../../context/StoreContext';
 import axios from 'axios';
 
-const LoginPopup = ({ setShowLogin }) => {
+const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
 
-    const {url, setToken} = useContext(storeContext)
+    const {url, setToken} = useContext(storeContext);
     const [currState, setCurrState] = useState("Login");
     const [data, setData] = useState({
         name: "",
         email: "",
         password: ""
-    })
+    });
 
     const onchangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setData(data =>({...data, [name]: value}))
-    }
+        setData(data =>({...data, [name]: value}));
+    };
 
     const onLogin = async (event) => {
-        event.preventDefault()
-        let newUrl = url
+        event.preventDefault();
+        let newUrl = url;
         if(currState === "Login") {
-            newUrl += '/api/user/login'
+            newUrl += '/api/user/login';
         }
         else {
-            newUrl += '/api/user/register'
+            newUrl += '/api/user/register';
         }
 
-        const response = await axios.post(newUrl, data)
+        const response = await axios.post(newUrl, data);
         if (response.data.success) {
-            setToken(response.data.token)
-            localStorage.setItem("token", response.data.token)
-            setShowLogin(false)
+            setToken(response.data.token);
+            localStorage.setItem("token", response.data.token);
+            setEmail(data.email); // Set the email state in the parent component
+            setShowLogin(false);
         }
         else {
-            alert(response.data.message)
+            alert(response.data.message);
         }
-    }
+    };
 
     useEffect(() => {
         // Disable scrolling when the component mounts
