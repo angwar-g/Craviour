@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import './Cart.css'
 import { storeContext } from '../../context/StoreContext'
-import Footer from '../../components/Footer/Footer'
 import { useNavigate } from 'react-router-dom'
 
 const Cart = () => {

@@ -9,6 +9,7 @@ import OrderHistory from './pages/OrderHistory/OrderHistory';
 import Footer from './components/Footer/Footer';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Navbar from './components/Navbar/Navbar';
+import Verify from './pages/Verify/Verify';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/orderhistory' element={<OrderHistory />} />
           <Route path='/order' element={<PlaceOrder />} />
+          <Route path='/verify' element={<Verify />} />
         </Routes>
       </div>
       <Footer toggleSidebar={toggleSidebar} />

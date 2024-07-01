@@ -42,7 +42,7 @@ const TopNav = (props) => {
 
                 {!token? <button onClick={() => props.setShowLogin(true)} className='profile-button'>Sign In</button> : 
                 <div className='topnav-profile'> 
-                    <img src={assets.profile_icon} />
+                    <img src={assets.profile_image} />
                     <ul className="nav-profile-dropdown">
                         <li>
                             <img src={assets.bag_icon}></img>

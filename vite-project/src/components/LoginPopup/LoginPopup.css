@@ -5,6 +5,7 @@
     height: 100%;
     background-color: #00000090;
     display: grid;
+    pointer-events: auto;
 }
 
 .login-popup-container {
@@ -72,3 +73,7 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.no-click {
+    pointer-events: none;
+  }

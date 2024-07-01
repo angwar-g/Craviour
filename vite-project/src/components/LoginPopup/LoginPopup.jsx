@@ -35,6 +35,7 @@ const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token);
             setEmail(data.email); // Set the email state in the parent component
+            localStorage.setItem("email", data.email)
             setShowLogin(false);
         }
         else {
@@ -45,10 +46,12 @@ const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
     useEffect(() => {
         // Disable scrolling when the component mounts
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-click');
 
         // Enable scrolling when the component unmounts
         return () => {
             document.body.style.overflow = 'auto';
+            document.body.classList.remove('no-click');
         };
     }, []);
 
