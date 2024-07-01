@@ -44,7 +44,7 @@ const TopNav = (props) => {
                 <div className='topnav-profile'> 
                     <img src={assets.profile_image} />
                     <ul className="nav-profile-dropdown">
-                        <li>
+                        <li onClick={() => navigate('/orderhistory')}>
                             <img src={assets.bag_icon}></img>
                             <p>Orders</p>
                         </li>
