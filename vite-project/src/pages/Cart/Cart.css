@@ -31,10 +31,24 @@
 
 .cart-items-item .plus {
     cursor: pointer;
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+    background-color: #ffe1e1;
+    color: #454545;
 }
 
 .cart-items-item .minus {
     cursor: pointer;
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffe1e1;
+    color: #454545;
 }
 
 .cart-bottom {
