@@ -15,7 +15,7 @@ const Home = ({ toggleSidebar, isSidebarOpen, searchQuery }) => {
         <Header />
         <ExploreMenu category={category} setCategory={setCategory} />
         <FoodDisplay category={category} searchQuery={searchQuery} />
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 }

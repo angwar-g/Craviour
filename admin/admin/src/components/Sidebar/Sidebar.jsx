@@ -20,7 +20,7 @@ const Sidebar = () => {
                 <p>Orders</p>
             </NavLink>
             <NavLink to='http://localhost:5173' className="sidebar-option">
-                <img src={assets.order_icon}/>
+                <img src={assets.logout_icon} className='logout-icon'/>
                 <p>Logout</p>
             </NavLink>
         </div>

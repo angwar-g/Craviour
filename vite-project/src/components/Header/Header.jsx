@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 import './Header.css'
 
 const Header = () => {
-  // const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!isSidebarOpen);
-  // };
 
   return (
     <>
-    {/* <TopNav toggleSidebar={toggleSidebar}/> */}
     <div className= 'header'>
         <div className='header-contents'>
             <h2>Order your favourite food here!</h2>

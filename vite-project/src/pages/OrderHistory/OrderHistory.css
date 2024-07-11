@@ -2,13 +2,17 @@
     margin: 90px 20px 0;
 }
 
-/* Container styling for holding order items */
 .my-orders .container {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-top: 30px;
     align-items: center;
+}
+
+.my-orders .container p {
+    font-size: 20px;
+    margin: 90px;
 }
 
 .my-orders-order {

@@ -1,0 +1,14 @@
+.welcome h3 {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 36px;
+    color: orangered;
+}
+
+.welcome p {
+    margin-left: 50px;
+    font-size: 20px;
+    color: #454545;
+}
+

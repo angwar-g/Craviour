@@ -29,3 +29,9 @@
     background-color: #fff0ed;
     border-color: tomato;
 }
+
+.sidebar-option .logout-icon {
+    width: 35px;
+    height: 30px;
+    margin-left: -6px;
+}
