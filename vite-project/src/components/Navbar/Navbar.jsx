@@ -4,17 +4,21 @@ import { IoPersonSharp } from "react-icons/io5";
 import './Navbar.css';
 import { assets } from '../../assets/assets';
 
-const Navbar = ({ show }) => {
+const Navbar = ({ show, email: propEmail }) => {
   const [menu, setMenu] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    // retrieve email from local storage when component mount
-    const savedEmail = localStorage.getItem('email');
-    if (savedEmail) {
-      setEmail(savedEmail);
+    // Check if propEmail is provided, otherwise retrieve email from local storage
+    if (propEmail) {
+      setEmail(propEmail);
+    } else {
+      const savedEmail = localStorage.getItem('email');
+      if (savedEmail) {
+        setEmail(savedEmail);
+      }
     }
-  }, []);
+  }, [propEmail]); // Depend on propEmail
 
   return (
     <div className={show ? 'sidenav active' : 'sidenav'}>
@@ -32,11 +36,6 @@ const Navbar = ({ show }) => {
         <li onClick={() => setMenu("about")} className={menu === "about" ? "clicked" : ""}>
           <a href="#footer"><IoPersonSharp />About Us</a>
         </li>
-        {email && email.includes("admin") && (
-          <li onClick={() => setMenu("admin")} className={menu === "admin" ? "clicked" : ""}>
-            <a href="http://localhost:5174/add"><IoPersonSharp />Admin Panel</a>
-          </li>
-        )}
       </ul>
     </div>
   );

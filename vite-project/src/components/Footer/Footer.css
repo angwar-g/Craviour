@@ -10,6 +10,7 @@
     margin-top: 45px;
     transition: padding-left 0.8s ease; 
     width: 100%;
+    overflow-x: hidden;
 }
 
 .logo-image {

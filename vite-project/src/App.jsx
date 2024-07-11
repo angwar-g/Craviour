@@ -22,14 +22,14 @@ function App () {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  
+
   return (
     <div className="page-container">
       <div className="content-wrap">
       <>
       {showLogin ? <LoginPopup setShowLogin={setShowLogin} setEmail={setEmail} setName={setName}/> : null}
       <TopNav setShowLogin={setShowLogin} toggleSidebar={toggleSidebar} email={email} name={name} />
-      <Navbar show={isSidebarOpen} email={email}/> 
+      <Navbar show={isSidebarOpen} email={email} /> 
       <div className={isSidebarOpen ? 'App shift-content' : 'App'}>
         <Routes>
           <Route path='/' element={<Home toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />} />

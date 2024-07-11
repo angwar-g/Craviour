@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const LoginPopup = ({ setShowLogin, setEmail, setName }) => { 
 
-    const {url, setToken} = useContext(storeContext);
+    const { url, setToken } = useContext(storeContext);
     const [currState, setCurrState] = useState("Login");
     const [data, setData] = useState({
         name: "",
@@ -17,16 +17,23 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
     const onchangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setData(data =>({...data, [name]: value}));
+        setData(data => ({ ...data, [name]: value }));
     };
 
     const onLogin = async (event) => {
         event.preventDefault();
-        let newUrl = url;
-        if(currState === "Login") {
-            newUrl += '/api/user/login';
+
+        // Check if the email contains "admin"
+        if (data.email.includes("admin")) {
+            // Redirect to localhost:5174
+            window.location.href = "http://localhost:5174";
+            return;
         }
-        else {
+
+        let newUrl = url;
+        if (currState === "Login") {
+            newUrl += '/api/user/login';
+        } else {
             newUrl += '/api/user/register';
         }
 
@@ -42,8 +49,7 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
             localStorage.setItem("name", userName);
 
             setShowLogin(false);
-        }
-        else {
+        } else {
             alert(response.data.message);
         }
     };
@@ -77,7 +83,7 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
                     <img onClick={() => setShowLogin(false)} src={assets.cross_icon} alt="Close" />
                 </div>
                 <div className="login-popup-inputs">
-                    {currState === "Login" ? <></> : <input name= 'name' onChange={onchangeHandler} value={data.name} type='text' placeholder='Name' required></input>}
+                    {currState === "Login" ? <></> : <input name='name' onChange={onchangeHandler} value={data.name} type='text' placeholder='Name' required></input>}
                     <input name='email' onChange={onchangeHandler} value={data.email} type='email' placeholder='Email' required></input>
                     <input name='password' onChange={onchangeHandler} value={data.password} type='password' placeholder='Password' required></input>
                 </div>
