@@ -8,10 +8,28 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     color: #000;
     overflow-x: hidden;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+    /* Other styling for your content */
 }
 
 a {
@@ -33,4 +51,3 @@ a {
         opacity: 1;
     }
 }
-

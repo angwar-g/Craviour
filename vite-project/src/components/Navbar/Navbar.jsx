@@ -9,7 +9,7 @@ const Navbar = ({ show }) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    // Retrieve email from local storage on component mount
+    // retrieve email from local storage when component mount
     const savedEmail = localStorage.getItem('email');
     if (savedEmail) {
       setEmail(savedEmail);
@@ -27,7 +27,7 @@ const Navbar = ({ show }) => {
           <a href="/cart"><FaShoppingCart />Cart</a>
         </li>
         <li onClick={() => setMenu("history")} className={menu === "orders" ? "clicked" : ""}>
-          <a href="/orders"><FaHistory />Orders</a>
+          <a href="/orderhistory"><FaHistory />Orders</a>
         </li>
         <li onClick={() => setMenu("about")} className={menu === "about" ? "clicked" : ""}>
           <a href="#footer"><IoPersonSharp />About Us</a>

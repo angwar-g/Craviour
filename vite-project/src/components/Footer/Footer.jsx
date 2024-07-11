@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 const Footer = ({ isSidebarOpen }) => {
   return (
-    <div className={`footer ${isSidebarOpen ? 'footer-sidebar-open' : ''}`} id='footer'>
+    <footer className={`footer ${isSidebarOpen ? 'footer-sidebar-open' : ''}`} id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
                 <img className="logo-image" src={assets.logo}></img>
@@ -37,7 +37,7 @@ const Footer = ({ isSidebarOpen }) => {
         2023-2024 © Craviour™ Ltd. All rights reserved.
             </p>
         
-    </div>
+    </footer>
   )
 }
 

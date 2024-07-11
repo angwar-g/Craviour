@@ -12,7 +12,7 @@ const Home = ({ toggleSidebar, isSidebarOpen }) => {
 
   return (
     <div className={isSidebarOpen ? "shift-content" : "content-wrapper"}>
-        {/* TopNav is moved to App.js */}
+        {/* TopNav moved to App.js */}
         <Header />
         <ExploreMenu category={category} setCategory={setCategory} />
         <FoodDisplay category={category} />

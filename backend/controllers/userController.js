@@ -9,6 +9,7 @@ const loginUser = async (req, res) => {
     const {email, password} = req.body;
     try {
         const user = await userModel.findOne({email})
+        const name = user.name;
 
         if (!user) {
             return res.json({success:false, message: "User does not exist"});
@@ -21,7 +22,7 @@ const loginUser = async (req, res) => {
 
         // CREATE TOKEN IF PASSWORD MATCHES
         const token = createToken(user._id);
-        res.json({success:true, token});
+        res.json({success:true, token, name, email});
 
     } catch (error) {
         console.log(error);

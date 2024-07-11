@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets';
 import { storeContext } from '../../context/StoreContext';
 import axios from 'axios';
 
-const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
+const LoginPopup = ({ setShowLogin, setEmail, setName }) => { 
 
     const {url, setToken} = useContext(storeContext);
     const [currState, setCurrState] = useState("Login");
@@ -34,8 +34,13 @@ const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
         if (response.data.success) {
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token);
-            setEmail(data.email); // Set the email state in the parent component
-            localStorage.setItem("email", data.email)
+            setEmail(data.email); 
+            localStorage.setItem("email", data.email);
+
+            const userName = currState === "Login" ? response.data.name : data.name;
+            setName(userName);
+            localStorage.setItem("name", userName);
+
             setShowLogin(false);
         }
         else {
@@ -44,18 +49,18 @@ const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
     };
 
     useEffect(() => {
-        // Disable scrolling when the component mounts
+        // disable scrolling when the component mounts
         document.body.style.overflow = 'hidden';
         document.body.classList.add('no-click');
 
-        // Enable scrolling when the component unmounts
+        // enable scrolling when the component unmounts
         return () => {
             document.body.style.overflow = 'auto';
             document.body.classList.remove('no-click');
         };
     }, []);
 
-    // Effect to clear form data when switching between Login and Sign Up
+    // clear form data when switching between Login and Sign Up
     useEffect(() => {
         setData({
             name: "",
@@ -76,11 +81,11 @@ const LoginPopup = ({ setShowLogin, setEmail }) => { // Added setEmail prop
                     <input name='email' onChange={onchangeHandler} value={data.email} type='email' placeholder='Email' required></input>
                     <input name='password' onChange={onchangeHandler} value={data.password} type='password' placeholder='Password' required></input>
                 </div>
-                <button type='submit'>{currState === "Sign Up" ? "Create Account" : "Login"}</button>
                 <div className="login-popup-condition">
                     <input type="checkbox" required />
                     <p>By continuing, I agree to the Terms of Use and Privacy Policy.</p>
                 </div>
+                <button type='submit'>{currState === "Sign Up" ? "Create Account" : "Login"}</button>
                 {currState === "Login" ? (
                     <p>
                         Create a new account?

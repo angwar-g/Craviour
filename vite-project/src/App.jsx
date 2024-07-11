@@ -10,21 +10,26 @@ import Footer from './components/Footer/Footer';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Navbar from './components/Navbar/Navbar';
 import Verify from './pages/Verify/Verify';
+import './index.css';
+import './components/Footer/Footer.css';
 
-function App() {
+function App () {
   const [showLogin, setShowLogin] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [email, setEmail] = useState(""); // Initialize with an empty string
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
+  
   return (
-    <>
-      {showLogin ? <LoginPopup setShowLogin={setShowLogin} setEmail={setEmail} /> : null}
-      <TopNav setShowLogin={setShowLogin} toggleSidebar={toggleSidebar} />
-      <Navbar show={isSidebarOpen} email={email} /> {/* Pass email as prop */}
+    <div className="page-container">
+      <div className="content-wrap">
+      <>
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} setEmail={setEmail} setName={setName}/> : null}
+      <TopNav setShowLogin={setShowLogin} toggleSidebar={toggleSidebar} email={email} name={name} />
+      <Navbar show={isSidebarOpen} email={email}/> 
       <div className={isSidebarOpen ? 'App shift-content' : 'App'}>
         <Routes>
           <Route path='/' element={<Home toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />} />
@@ -36,7 +41,10 @@ function App() {
       </div>
       <Footer toggleSidebar={toggleSidebar} />
     </>
+      </div>
+    </div>
   );
 }
 
 export default App;
+  

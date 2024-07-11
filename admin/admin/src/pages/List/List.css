@@ -1,10 +1,10 @@
 .list-table-format {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr 0.5fr;
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
     gap: 10px;
     padding: 12px 15px;
     border: 1px solid #cacaca;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .list-table-format .title {
@@ -16,11 +16,50 @@
 }
 
 .cursor-delete, .cursor-edit {
-    border: none;
-    padding: 5px 5px;
-    border-radius: 4px;
-    background-color: #ffe1e1;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: tomato;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
     cursor: pointer;
-    color: #454545;
-    margin-right: 10px
+    display: inline-flex;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    min-height: 1rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 80px;
+    margin-right: 18px;
 }
+
+.cursor-delete:hover, .cursor-edit:hover, .cursor-delete:focus, .cursor-edit:focus {
+    background-color: tomato;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.cursor-delete:hover, .cursor-edit:hover {
+    transform: translateY(-2px);
+}
+
+.cursor-delete:active, .cursor-edit:active {
+    background-color: tomato;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+
+}
+
+
+
