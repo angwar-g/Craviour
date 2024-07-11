@@ -5,17 +5,17 @@ import ExploreMenu from '../../components/ExploreMenu/ExploreMenu';
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 import Footer from '../../components/Footer/Footer';
 
-const Home = ({ toggleSidebar, isSidebarOpen }) => {
+const Home = ({ toggleSidebar, isSidebarOpen, searchQuery }) => {
   const [category, setCategory] = useState('All');
 
   console.log('Home component rendering');
 
   return (
     <div className={isSidebarOpen ? "shift-content" : "content-wrapper"}>
-        {/* TopNav moved to App.js */}
         <Header />
         <ExploreMenu category={category} setCategory={setCategory} />
-        <FoodDisplay category={category} />
+        <FoodDisplay category={category} searchQuery={searchQuery} />
+        <Footer />
     </div>
   );
 }
