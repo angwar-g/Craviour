@@ -88,7 +88,7 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
                                 <span>&gt;</span>
                             </li>
                             <li onClick={logout} class='sub-menu-link'>
-                                <img src={assets.profile_icon}></img>
+                                <img src={assets.logout_icon}></img>
                                 <p>Logout</p>
                                 <span>&gt;</span>
                             </li>
