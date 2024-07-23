@@ -26,7 +26,7 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
         // Check if the email contains "admin"
         if (data.email.includes("admin")) {
             // Redirect to localhost:5174
-            window.location.href = "http://localhost:5174";
+            window.location.href = "http://localhost:5174/add";
             return;
         }
 

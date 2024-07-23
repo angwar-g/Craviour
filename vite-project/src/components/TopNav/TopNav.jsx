@@ -8,6 +8,7 @@ import Navbar from '../Navbar/Navbar';
 
 const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
     const [showNav, setShowNav] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [localSearchQuery, setLocalSearchQuery] = useState(''); // State for search query
@@ -38,12 +39,16 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
         if (savedName) {
             setName(savedName);
         }
-      }, []);
+    }, []);
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase().trim();
         setLocalSearchQuery(query);
+    };
 
+    const handleSearchIconClick = () => {
+        setShowSearch(true);
+        document.getElementById('food-display')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -58,45 +63,55 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
                 />
                 <Link to="/"><div className='title'>Craviour.</div></Link>
                 <div className="search">
-                    <img className="search-icon" src={assets.search_icon} alt="search icon" />
-                    <input onClick={(e) => {window.location.href = '/#food-display'}}
-                        className="search-input"
-                        placeholder="Search"
-                        type="search"
-                        value={localSearchQuery} // Bind value to searchQuery state
-                        onChange={handleSearch} // Update searchQuery on input change
+                    <img
+                        className="search-icon"
+                        src={assets.search_icon}
+                        alt="search icon"
+                        onClick={handleSearchIconClick}
                     />
+                    {showSearch && (
+                        <input
+                            className="search-input"
+                            placeholder="Search"
+                            type="search"
+                            value={localSearchQuery} // Bind value to searchQuery state
+                            onChange={handleSearch} // Update searchQuery on input change
+                            autoFocus
+                        />
+                    )}
                 </div>
 
                 <Link to="/cart"><img src={assets.basket_icon} className='cart' /></Link>
                 <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
 
-                {!token? <button onClick={() => setShowLogin(true)} className='profile-button'>Sign In</button> : 
-                <div className='topnav-profile'> 
-                    <img src={assets.profile_image}/>
-                    <div className="sub-menu-wrap">
-                        <div className="sub-menu">
-                            <div className="user-info">
-                            <img src={assets.profile_image}></img>
-                            <h2>{name}</h2>
+                {!token ? (
+                    <button onClick={() => setShowLogin(true)} className='profile-button'>Sign In</button>
+                ) : (
+                    <div className='topnav-profile'>
+                        <img src={assets.profile_image} alt="profile" />
+                        <div className="sub-menu-wrap">
+                            <div className="sub-menu">
+                                <div className="user-info">
+                                    <img src={assets.profile_image} alt="profile" />
+                                    <h2>{name}</h2>
+                                </div>
+                                <hr />
+                                <ul>
+                                    <li onClick={() => navigate('/orderhistory')} className='sub-menu-link'>
+                                        <img src={assets.bag_icon} alt="orders" />
+                                        <p>Orders</p>
+                                        <span>&gt;</span>
+                                    </li>
+                                    <li onClick={logout} className='sub-menu-link'>
+                                        <img src={assets.logout_icon} alt="logout" />
+                                        <p>Logout</p>
+                                        <span>&gt;</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <hr></hr>
-                            <ul>
-                            <li onClick={() => navigate('/orderhistory')} class='sub-menu-link' >
-                                <img src={assets.bag_icon}></img>
-                                <p>Orders</p>
-                                <span>&gt;</span>
-                            </li>
-                            <li onClick={logout} class='sub-menu-link'>
-                                <img src={assets.logout_icon}></img>
-                                <p>Logout</p>
-                                <span>&gt;</span>
-                            </li>
-                            </ul>
                         </div>
                     </div>
-                </div> 
-                }
+                )}
             </div>
             {<Navbar show={showNav} />}
         </div>

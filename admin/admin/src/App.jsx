@@ -20,8 +20,9 @@ const App = () => {
       <hr/>
       <div className="app-content">
         <Sidebar />
-        <div className="welcome"><h3>Hello Admin!</h3>
-        <p>Welcome to the Craviour Admin Panel!</p></div>
+        {/* <div className="welcome">
+          <h3>Hello Admin!</h3>
+        <p>Welcome to the Craviour Admin Panel!</p></div> */}
         <Routes>
           <Route path='/add' element={<Add url={url}/>} />
           <Route path='/list' element={<List url={url}/>} />
