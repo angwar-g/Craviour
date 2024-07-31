@@ -65,7 +65,7 @@
 
 .topnav .cart {
     position: absolute;
-    right: 90px;
+    right: 75px;
     padding: var(--padding);
     font-size: 18px;
     cursor: pointer;
@@ -92,10 +92,11 @@
 }
 
 .profile-button {
+    width: fit-content;
     position: absolute;
     margin-bottom: 5px;
     margin-top: 10px;
-    right: 20px;
+    right: 12px;
     font-size: 16px;
     padding: 10px 30px;
     background: transparent;
@@ -114,7 +115,9 @@
     align-items: center;
     position: relative;
     margin-left: auto; 
-    margin-right: 25px;
+    margin-right: 40px;
+    width: 25px;
+    margin-top: 3px;
 }
 
 .topnav-profile img {
@@ -153,7 +156,7 @@
 }
 
 .user-info img {
-    width: 60px;
+    width: 40px;
     border-radius: 50%;
     margin-right: 15px;
 }

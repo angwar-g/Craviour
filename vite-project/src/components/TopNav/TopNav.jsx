@@ -11,8 +11,9 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
     const [showSearch, setShowSearch] = useState(false);
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
+    const [profileImage, setProfileImage] = useState("")
     const [localSearchQuery, setLocalSearchQuery] = useState(''); // State for search query
-    const { getTotalCartAmount, token, setToken, food_list } = useContext(storeContext);
+    const { url, getTotalCartAmount, token, setToken} = useContext(storeContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,9 +24,11 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
         localStorage.removeItem("token")
         localStorage.removeItem("name")
         localStorage.removeItem("email")
+        localStorage.removeItem("profileImage")
         setToken("")
         setEmail("")
         setName("")
+        setProfileImage("")
         navigate('/')
     }
 
@@ -33,12 +36,15 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
         // retrieve email from local storage when component mounts
         const savedEmail = localStorage.getItem('email');
         const savedName = localStorage.getItem('name');
+        const savedProfileImage = localStorage.getItem('profile image');
         if (savedEmail) {
           setEmail(savedEmail);
         }
         if (savedName) {
             setName(savedName);
         }
+        if (savedProfileImage) setProfileImage(savedProfileImage);
+        console.log("Profile Image", savedProfileImage)
     }, []);
 
     const handleSearch = (e) => {
@@ -88,15 +94,20 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
                     <button onClick={() => setShowLogin(true)} className='profile-button'>Sign In</button>
                 ) : (
                     <div className='topnav-profile'>
-                        <img src={assets.profile_image} alt="profile" />
+                        <img src={profileImage ? `${url}/images/${profileImage}` : assets.profile_icon} alt="profile" />
                         <div className="sub-menu-wrap">
                             <div className="sub-menu">
                                 <div className="user-info">
-                                    <img src={assets.profile_image} alt="profile" />
+                                <img src={profileImage ? `${url}/images/${profileImage}` : assets.profile_icon} alt="profile" />
                                     <h2>{name}</h2>
                                 </div>
                                 <hr />
                                 <ul>
+                                <li onClick={() => navigate('/account')} className='sub-menu-link'>
+                                        <img src={assets.profile_icon} alt="logout" />
+                                        <p>My Account</p>
+                                        <span>&gt;</span>
+                                    </li>
                                     <li onClick={() => navigate('/orderhistory')} className='sub-menu-link'>
                                         <img src={assets.bag_icon} alt="orders" />
                                         <p>Orders</p>

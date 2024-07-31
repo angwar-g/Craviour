@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className='navbar'>
         <h1>Craviour.</h1>
         <p>Admin Panel</p>
-        <img className='profile' src={assets.profile_image} alt="" />
+        <img className='profile' src={assets.profile_icon} alt="" />
     </div>
   )
 }

@@ -19,7 +19,7 @@ const FoodDisplay = ({ category, searchQuery }) => {
                         if (!searchQuery || searchQuery.trim() === '') {
                             return true;
                         }
-                        return item.name.toLowerCase().includes(searchQuery.toLowerCase());
+                        return item.name.toLowerCase().includes(searchQuery.toLowerCase()) || String(item.price).includes(searchQuery);
                     })
                     .filter((item) => category === "All" || item.category === category)
                     .map((item, index) => (

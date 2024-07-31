@@ -11,7 +11,8 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
     const [data, setData] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        profileImage: ""
     });
 
     const onchangeHandler = (event) => {
@@ -48,7 +49,12 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
             setName(userName);
             localStorage.setItem("name", userName);
 
+            const profileImage = response.data.profileImage || data.profileImage;
+            localStorage.setItem("profile image", profileImage);
+
             setShowLogin(false);
+
+            window.location.reload()
         } else {
             alert(response.data.message);
         }
@@ -71,7 +77,7 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
         setData({
             name: "",
             email: "",
-            password: ""
+            password: "",
         });
     }, [currState]);
 
