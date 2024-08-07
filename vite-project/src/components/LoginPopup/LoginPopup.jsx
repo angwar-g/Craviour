@@ -50,7 +50,7 @@ const LoginPopup = ({ setShowLogin, setEmail, setName }) => {
             localStorage.setItem("name", userName);
 
             const profileImage = response.data.profileImage || data.profileImage;
-            localStorage.setItem("profile image", profileImage);
+            localStorage.setItem("profileImage", profileImage);
 
             setShowLogin(false);
 
