@@ -6,6 +6,7 @@ import userRouter from './routes/userRoute.js'
 import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
+import payment from './routes/paymentRoute.js'
 
 // APP CONFIG
 const app = express()
@@ -30,8 +31,11 @@ app.get('/', (req, res) => {
     res.send('API Working')
 })
 
+app.use('/api/payment', payment);
+
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`)
 })
 
 // mongodb+srv://gangwaramishi:CXjiI4m5xj42clps@cluster0.yzgcltm.mongodb.net/?
+

@@ -59,7 +59,6 @@ import profile_icon from './profile_icon.png'
 import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
-import profile_image from './profile_image.png'
 import upload_area from './upload_area.png'
 
 export const assets = {
@@ -82,7 +81,6 @@ export const assets = {
     logout_icon,
     bag_icon,
     parcel_icon, 
-    profile_image,
     upload_area
 }
 

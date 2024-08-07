@@ -2,8 +2,19 @@ import { response } from "express";
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe"
+import nodemailer from "nodemailer"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: "gangwaramishi@gmail.com",
+      pass: "ydvs jqny nngf ewyt",
+    },
+  });
 
 // PLACING ORDER FROM FRONTEND
 
@@ -66,7 +77,24 @@ const verifyOrder = async (req, res) => {
     try {
         if (success == 'true') {
             await orderModel.findByIdAndUpdate(orderId, {payment:true})
+
+            transporter.sendMail({
+                from: "gangwaramishi@gmail.com", // sender address
+                to: "gangwaramishi@gmail.com", // list of receivers
+                subject: "Payment Successful", // Subject line
+                text: "Your payment was successful! Thanks for ordering with Craviour", // plain text body
+                // html: "<b>Hello world?</b>", // html body
+              }, function(error, info) {
+                if(error){
+                    console.log(error)
+                }
+                else{
+                    console.log("Email Sent Successfully");
+                }
+              });
+        
             res.json({success:true, message:"Order placed successfully"})
+            // console.log("Message sent: %s", info.messageId);
         }
         else {
             await orderModel.findByIdAndDelete(orderId)

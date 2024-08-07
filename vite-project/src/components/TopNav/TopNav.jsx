@@ -36,7 +36,7 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
         // retrieve email from local storage when component mounts
         const savedEmail = localStorage.getItem('email');
         const savedName = localStorage.getItem('name');
-        const savedProfileImage = localStorage.getItem('profile image');
+        const savedProfileImage = localStorage.getItem('profileImage');
         if (savedEmail) {
           setEmail(savedEmail);
         }
