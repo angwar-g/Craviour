@@ -12,12 +12,12 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [profileImage, setProfileImage] = useState("")
-    const [localSearchQuery, setLocalSearchQuery] = useState(''); // State for search query
+    const [localSearchQuery, setLocalSearchQuery] = useState(''); 
     const { url, getTotalCartAmount, token, setToken} = useContext(storeContext);
     const navigate = useNavigate();
 
     useEffect(() => {
-        setSearchQuery(localSearchQuery); // Update parent state when local state changes
+        setSearchQuery(localSearchQuery); 
     }, [localSearchQuery, setSearchQuery]);
 
     const logout = () => {
@@ -80,8 +80,8 @@ const TopNav = ({ toggleSidebar, setSearchQuery, setShowLogin }) => {
                             className="search-input"
                             placeholder="Search"
                             type="search"
-                            value={localSearchQuery} // Bind value to searchQuery state
-                            onChange={handleSearch} // Update searchQuery on input change
+                            value={localSearchQuery} 
+                            onChange={handleSearch} 
                             autoFocus
                         />
                     )}

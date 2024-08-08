@@ -80,11 +80,10 @@ const verifyOrder = async (req, res) => {
             await orderModel.findByIdAndUpdate(orderId, {payment:true})
 
             transporter.sendMail({
-                from: "gangwaramishi@gmail.com", // sender address
-                to: "gangwaramishi@gmail.com", // list of receivers
-                subject: "Payment Successful", // Subject line
-                text: "Your payment was successful! Thanks for ordering with Craviour", // plain text body
-                // html: "<b>Hello world?</b>", // html body
+                from: "gangwaramishi@gmail.com", 
+                to: "gangwaramishi@gmail.com", // change to user email
+                subject: "Payment Successful", 
+                text: "Your payment was successful! Thanks for ordering on Craviour",
               }, function(error, info) {
                 if(error){
                     console.log(error)
